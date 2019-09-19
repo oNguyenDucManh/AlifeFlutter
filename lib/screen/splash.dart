@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screen/main.dart';
+import 'package:flutter_app/config/MyColors.dart';
+import 'mainscreen.dart';
 import 'package:page_indicator/page_indicator.dart';
-import '../SizeConfig.dart';
-import 'main.dart';
+import 'package:flutter_app/config/SizeConfig.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,8 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+        primaryColor: MyColors.colorPrimary),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -37,8 +36,23 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void clickNext() {
+    if (isLastPage) {
+      gotoMain();
+    } else {
+      setState(() {
+        currentPage++;
+        print("click next $currentPage");
+        _controller.animateToPage(currentPage,
+            duration: Duration(milliseconds: 500), curve: Curves.ease);
+      });
+    }
+  }
+
   bool isLastPage = false;
   double marginRightNext = 0;
+  int currentPage = 0;
+  PageController _controller = PageController(initialPage: 0, keepPage: true);
 
   @override
   void initState() {
@@ -62,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         PageIndicatorContainer(
           child: PageView(
+            controller: _controller,
             children: <Widget>[
               pageChild(
                   "Create plans for happy day",
@@ -80,12 +95,12 @@ class _MyHomePageState extends State<MyHomePage> {
               if (page == 2) {
                 setState(() {
                   isLastPage = true;
-//                  marginRightNext = 0;
+                  currentPage = page;
                 });
               } else {
                 setState(() {
                   isLastPage = false;
-//                  marginRightNext = SizeConfig.safeBlockHorizontal * 8;
+                  currentPage = page;
                 });
               }
             },
@@ -129,26 +144,36 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget nextView() {
     if (!isLastPage) {
-      return Container(
-        padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 3),
-        child: Text("Next",
-            style: TextStyle(
-                color: Color.fromRGBO(93, 219, 204, 1),
-                fontSize: SizeConfig.safeBlockHorizontal * 5,
-                fontWeight: FontWeight.w500)),
+      return GestureDetector(
+        child: Container(
+            padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 3),
+            child: Text("Next",
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: SizeConfig.safeBlockHorizontal * 5,
+                    fontWeight: FontWeight.w500))),
+        onTap: () => clickNext(),
       );
     } else {
-      return Container(
-        padding: EdgeInsets.only(top: SizeConfig.safeBlockHorizontal * 3, left: SizeConfig.safeBlockHorizontal * 3, right: SizeConfig.safeBlockHorizontal * 5, bottom: SizeConfig.safeBlockHorizontal * 3),
-        decoration: new BoxDecoration(
-          color: Color.fromRGBO(93, 219, 204, 0.3),
-          borderRadius: new BorderRadius.only(topLeft: const Radius.circular(40.0), bottomLeft: const Radius.circular(40.0))
+      return GestureDetector(
+        child: Container(
+          padding: EdgeInsets.only(
+              top: SizeConfig.safeBlockHorizontal * 3,
+              left: SizeConfig.safeBlockHorizontal * 3,
+              right: SizeConfig.safeBlockHorizontal * 5,
+              bottom: SizeConfig.safeBlockHorizontal * 3),
+          decoration: new BoxDecoration(
+              color: Color.fromRGBO(93, 219, 204, 0.3),
+              borderRadius: new BorderRadius.only(
+                  topLeft: const Radius.circular(40.0),
+                  bottomLeft: const Radius.circular(40.0))),
+          child: Text("Get Started",
+              style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: SizeConfig.safeBlockHorizontal * 5,
+                  fontWeight: FontWeight.w500)),
         ),
-        child: Text("Get Started",
-            style: TextStyle(
-                color: Color.fromRGBO(93, 219, 204, 1),
-                fontSize: SizeConfig.safeBlockHorizontal * 5,
-                fontWeight: FontWeight.w500)),
+        onTap: () => clickNext(),
       );
     }
   }
