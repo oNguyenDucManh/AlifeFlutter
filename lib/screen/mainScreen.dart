@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
           child: PageView(
         controller: _pageViewController,
@@ -57,9 +58,9 @@ class _MyHomePageState extends State<MyHomePage> {
         selectedIndex: currentIndex,
         showElevation: true,
         onItemSelected: (index) => setState(() {
-          currentIndex = index;
-          _pageViewController.jumpToPage(index);
-        }),
+              currentIndex = index;
+              _pageViewController.jumpToPage(index);
+            }),
         items: [
           BottomNavyBarItem(
               icon: "assets/images/ic_my_plans.png",
