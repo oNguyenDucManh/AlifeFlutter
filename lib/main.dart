@@ -12,8 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: MyColors.colorPrimary),
+      theme: ThemeData(primaryColor: MyColors.colorPrimary),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -68,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
       if (isLastPage) {
         marginRightNext = 0;
       } else {
-        marginRightNext = SizeConfig.safeBlockHorizontal * 8;
+        marginRightNext = SizeConfig.getPt(8);
       }
     });
     return Scaffold(
@@ -107,17 +106,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           align: IndicatorAlign.bottom,
           length: 3,
-          indicatorColor: Color.fromRGBO(221, 224, 232, 1),
+          indicatorColor: Color.fromRGBO(221, 224, 233, 1),
           indicatorSelectorColor: Color.fromRGBO(84, 70, 219, 1),
           shape: IndicatorShape.circle(size: 8),
-          padding: EdgeInsets.only(bottom: SizeConfig.safeBlockVertical * 13),
+          padding: EdgeInsets.only(bottom: SizeConfig.getPt(76)),
         ),
         Align(
             alignment: Alignment.bottomLeft,
             child: Container(
               padding: EdgeInsets.only(
-                  bottom: SizeConfig.safeBlockVertical * 10,
-                  left: SizeConfig.safeBlockHorizontal * 8,
+                  bottom: SizeConfig.getPt(54.6),
+                  left: SizeConfig.getPt(32),
                   right: marginRightNext),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,12 +129,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget skipView() {
     return Container(
-      padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 3),
+      padding: EdgeInsets.only(
+          top: SizeConfig.getPt(14), bottom: SizeConfig.getPt(14)),
       child: GestureDetector(
         child: Text("Skip",
             style: TextStyle(
-                color: Color.fromRGBO(11, 17, 63, 1),
-                fontSize: SizeConfig.safeBlockHorizontal * 5,
+                color: Color.fromRGBO(34, 52, 94, 1),
+                fontSize: SizeConfig.getPt(16),
                 fontWeight: FontWeight.w500)),
         onTap: () => gotoMain(),
       ),
@@ -146,11 +146,14 @@ class _MyHomePageState extends State<MyHomePage> {
     if (!isLastPage) {
       return GestureDetector(
         child: Container(
-            padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal * 3),
+            padding: EdgeInsets.only(
+                top: SizeConfig.getPt(14),
+                bottom: SizeConfig.getPt(14),
+                right: SizeConfig.getPt(32)),
             child: Text("Next",
                 style: TextStyle(
                     color: Theme.of(context).primaryColor,
-                    fontSize: SizeConfig.safeBlockHorizontal * 5,
+                    fontSize: SizeConfig.getPt(16),
                     fontWeight: FontWeight.w500))),
         onTap: () => clickNext(),
       );
@@ -158,10 +161,10 @@ class _MyHomePageState extends State<MyHomePage> {
       return GestureDetector(
         child: Container(
           padding: EdgeInsets.only(
-              top: SizeConfig.safeBlockHorizontal * 3,
-              left: SizeConfig.safeBlockHorizontal * 3,
-              right: SizeConfig.safeBlockHorizontal * 5,
-              bottom: SizeConfig.safeBlockHorizontal * 3),
+              top: SizeConfig.getPt(14),
+              bottom: SizeConfig.getPt(14),
+              right: SizeConfig.getPt(32),
+              left: SizeConfig.getPt(16)),
           decoration: new BoxDecoration(
               color: Color.fromRGBO(93, 219, 204, 0.3),
               borderRadius: new BorderRadius.only(
@@ -170,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Text("Get Started",
               style: TextStyle(
                   color: Theme.of(context).primaryColor,
-                  fontSize: SizeConfig.safeBlockHorizontal * 5,
+                  fontSize: SizeConfig.getPt(16),
                   fontWeight: FontWeight.w500)),
         ),
         onTap: () => clickNext(),
@@ -196,14 +199,15 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                   width: SizeConfig.screenWidth,
                   padding: EdgeInsets.only(
-                      top: SizeConfig.safeBlockVertical * 12,
-                      left: SizeConfig.safeBlockHorizontal * 16,
-                      right: SizeConfig.safeBlockHorizontal * 16),
+                      top: SizeConfig.getPt(91.5),
+                      left: SizeConfig.getPt(16),
+                      right: SizeConfig.getPt(16)),
                   child: Text(
                     title,
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: SizeConfig.safeBlockHorizontal * 10,
+                        fontSize: SizeConfig.getPt(36),
+                        fontFamily: 'AvenirNext',
                         fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center,
                   ))
@@ -218,14 +222,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.only(
-                        left: SizeConfig.safeBlockHorizontal * 8,
-                        right: SizeConfig.safeBlockHorizontal * 8,
-                        top: SizeConfig.safeBlockVertical * 6),
+                        left: SizeConfig.getPt(32),
+                        right: SizeConfig.getPt(32),
+                        top: SizeConfig.getPt(32)),
                     child: Text(
                       description,
                       style: TextStyle(
-                          color: Color.fromRGBO(11, 17, 63, 1),
-                          fontSize: SizeConfig.safeBlockHorizontal * 5,
+                          color: Color.fromRGBO(34, 52, 94, 1),
+                          fontSize: SizeConfig.getPt(18),
+                          fontFamily: 'AvenirNext',
                           fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,
                     ),
