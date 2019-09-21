@@ -3,12 +3,12 @@ import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/myWidget/BottomNavyBar.dart';
 import 'blankScreen.dart';
+import 'dashboardScreen.dart';
 import 'myplansScreen.dart';
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-//    FlutterStatusbarcolor.setStatusBarColor(Colors.white);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -37,22 +37,23 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
           child: PageView(
-        controller: _pageViewController,
-        children: <Widget>[
-          MyPlansScreen(),
-          BlankScreen(),
-          BlankScreen(),
-          BlankScreen()
-        ],
-        onPageChanged: (index) {
-          setState(() {
-            print("index: $index");
-            currentIndex = index;
-          });
-        },
-      )),
+            controller: _pageViewController,
+            children: <Widget>[
+              MyPlansScreen(),
+              BlankScreen(),
+              DashboardScreen(),
+              BlankScreen()
+            ],
+            onPageChanged: (index) {
+              setState(() {
+                print("index: $index");
+                currentIndex = index;
+              });
+            },
+          )),
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: currentIndex,
         showElevation: true,
@@ -63,22 +64,34 @@ class _MyHomePageState extends State<MyHomePage> {
         items: [
           BottomNavyBarItem(
               icon: "assets/images/ic_my_plans.png",
-              title: Text('My Plans'),
+              title: Text(
+                'My Plans',
+                style: TextStyle(fontSize: SizeConfig.getPt(12)),
+              ),
               activeColor: MyColors.colorPrimary,
               inactiveColor: MyColors.colorPrimaryDark),
           BottomNavyBarItem(
               icon: "assets/images/ic_happy_day.png",
-              title: Text('Happy Day'),
+              title: Text(
+                'Happy Day',
+                style: TextStyle(fontSize: SizeConfig.getPt(12)),
+              ),
               activeColor: MyColors.colorPrimary,
               inactiveColor: MyColors.colorPrimaryDark),
           BottomNavyBarItem(
               icon: "assets/images/ic_dashboard.png",
-              title: Text('Dashboard'),
+              title: Text(
+                'Dashboard',
+                style: TextStyle(fontSize: SizeConfig.getPt(12)),
+              ),
               activeColor: MyColors.colorPrimary,
               inactiveColor: MyColors.colorPrimaryDark),
           BottomNavyBarItem(
               icon: "assets/images/ic_account.png",
-              title: Text('Account'),
+              title: Text(
+                'Account',
+                style: TextStyle(fontSize: SizeConfig.getPt(12)),
+              ),
               activeColor: MyColors.colorPrimary,
               inactiveColor: MyColors.colorPrimaryDark),
         ],

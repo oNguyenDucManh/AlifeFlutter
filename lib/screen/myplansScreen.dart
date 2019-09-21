@@ -40,16 +40,16 @@ class MyPlansState extends State<MyPlansScreen> {
           child: Container(
               color: Colors.white,
               padding: EdgeInsets.only(
-                  top: SizeConfig.safeBlockVertical * 2,
-                  left: SizeConfig.safeBlockHorizontal * 8,
-                  right: SizeConfig.safeBlockHorizontal * 8),
+                  top: SizeConfig.getPt(16),
+                  left: SizeConfig.getPt(24),
+                  right: SizeConfig.getPt(24)),
               child: Column(
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       CircleAvatar(
-                          radius: SizeConfig.safeBlockVertical * 3,
+                          radius: SizeConfig.getPt(25),
                           backgroundImage: NetworkImage(linkAvt)),
                       Column(
                         children: <Widget>[
@@ -57,15 +57,14 @@ class MyPlansState extends State<MyPlansScreen> {
                             "Your time today",
                             style: TextStyle(
                                 color: Color.fromRGBO(165, 174, 194, 1),
-                                fontSize: SizeConfig.safeBlockHorizontal * 3,
-                                fontWeight: FontWeight.w600),
+                                fontSize: SizeConfig.getPt(10)),
                           ),
-                          SizedBox(height: SizeConfig.safeBlockVertical * 1.2),
+                          SizedBox(height: SizeConfig.getPt(8)),
                           Text(
                             "750 min",
                             style: TextStyle(
                                 color: MyColors.colorPrimaryDark,
-                                fontSize: SizeConfig.safeBlockHorizontal * 4,
+                                fontSize: SizeConfig.getPt(16),
                                 fontWeight: FontWeight.w600),
                           )
                         ],
@@ -74,16 +73,16 @@ class MyPlansState extends State<MyPlansScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: SizeConfig.safeBlockVertical * 1.5,
-                        bottom: SizeConfig.safeBlockVertical * 1.5),
+                        top: SizeConfig.getPt(9.3),
+                        bottom: SizeConfig.getPt(12)),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
                         "Good Morning",
                         style: TextStyle(
-                            color: Color.fromRGBO(136, 147, 174, 1),
+                            color: Color.fromRGBO(121, 133, 163, 1),
                             fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.safeBlockHorizontal * 4),
+                            fontSize: SizeConfig.getPt(14)),
                       ),
                     ),
                   ),
@@ -93,48 +92,65 @@ class MyPlansState extends State<MyPlansScreen> {
                         "Nguyen Duc Manh",
                         style: TextStyle(
                             color: MyColors.colorPrimaryDark,
-                            fontSize: SizeConfig.safeBlockHorizontal * 5,
+                            fontSize: SizeConfig.getPt(18),
                             fontWeight: FontWeight.w600),
                       )
                     ],
                   ),
                   Padding(
                       padding: EdgeInsets.only(
-                          top: SizeConfig.safeBlockHorizontal * 8,
-                          left: SizeConfig.safeBlockHorizontal * 4,
-                          right: SizeConfig.safeBlockHorizontal * 4,
-                          bottom: SizeConfig.safeBlockHorizontal * 6),
+                          top: SizeConfig.getPt(36),
+                          left: SizeConfig.getPt(24),
+                          right: SizeConfig.getPt(24),
+                          bottom: SizeConfig.getPt(8)),
                       child: RichText(
                         textAlign: TextAlign.center,
                         text: new TextSpan(
                             style: TextStyle(
-                                color: MyColors.colorPrimaryDark,
-                                fontSize: SizeConfig.safeBlockHorizontal * 9,
+                                color: Color.fromRGBO(34, 52, 94, 1),
+                                fontSize: SizeConfig.getPt(36),
                                 fontWeight: FontWeight.w600),
                             children: <TextSpan>[
-                              new TextSpan(text: "Setup your plans "),
+                              new TextSpan(text: "Setup your plans\n"),
                               new TextSpan(
-                                  text: "make you happy ",
+                                  text: "make you happy\n",
                                   style:
                                       TextStyle(color: MyColors.colorPrimary)),
                               new TextSpan(text: "today...")
                             ]),
                       )),
-                  Padding(
-                      padding:
-                          EdgeInsets.all(SizeConfig.safeBlockHorizontal * 8),
-                      child: Container(
-                        width: SizeConfig.safeBlockHorizontal * 18,
-                        height: SizeConfig.safeBlockHorizontal * 18,
-                        decoration: new BoxDecoration(
-                          color: MyColors.red,
-                          shape: BoxShape.circle,
+                  Container(
+                    margin: EdgeInsets.only(top: SizeConfig.getPt(69.3)),
+                    width: SizeConfig.getPt(100.7),
+                    height: SizeConfig.getPt(100.7),
+                    child: Stack(
+                      children: <Widget>[
+                        Container(
+                          width: SizeConfig.getPt(100.7),
+                          height: SizeConfig.getPt(100.7),
+                          decoration: new BoxDecoration(
+                            color: MyColors.redA8,
+                            shape: BoxShape.circle,
+                          )
                         ),
-                        child: new Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ),
-                      ))
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: SizeConfig.getPt(60),
+                            height: SizeConfig.getPt(60),
+                            decoration: new BoxDecoration(
+                              color: MyColors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: new Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ))),
     );

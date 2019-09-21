@@ -56,8 +56,8 @@ class BottomNavyBar extends StatelessWidget {
                           ? item.activeColor
                           : item.inactiveColor),
                   child: Image.asset(item.icon,
-                      width: SizeConfig.safeBlockHorizontal * 6,
-                      height: SizeConfig.safeBlockHorizontal * 6,
+                      width: SizeConfig.getPt(24),
+                      height: SizeConfig.getPt(24),
                       color: isSelected
                           ? item.activeColor.withOpacity(1)
                           : item.inactiveColor == null
