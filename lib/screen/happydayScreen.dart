@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/myWidget/StackedBarChart.dart';
 
 class HappyDayScreen extends StatefulWidget {
   @override
@@ -13,7 +12,7 @@ class HappyDayState extends State<HappyDayScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: StackedBarChart.withSampleData(),
+        child: Text("aaa"),
       ),
     );
   }
