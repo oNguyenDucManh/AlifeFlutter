@@ -4,6 +4,7 @@ import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/myWidget/BottomNavyBar.dart';
 import 'blankScreen.dart';
 import 'dashboardScreen.dart';
+import 'happydayScreen.dart';
 import 'myplansScreen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         controller: _pageViewController,
         children: <Widget>[
           MyPlansScreen(),
-          BlankScreen(),
+          HappyDayScreen(),
           DashboardScreen(),
           BlankScreen()
         ],

@@ -4,6 +4,7 @@ import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/myWidget/CustomCard.dart';
 import 'package:flutter_app/myWidget/MyBarChart.dart';
+import 'package:flutter_app/myWidget/StackedBarChart.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -162,7 +163,7 @@ class DashboardState extends State<DashboardScreen> {
                   shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
                   borderRadius: SizeConfig.getPt(24),
                   child: Container(
-                    height: SizeConfig.getPt(200),
+                    padding: EdgeInsets.all(SizeConfig.getPt(16)),
                   ),
                 ),
                 SizedBox(height: SizeConfig.getPt(30)),
@@ -173,20 +174,32 @@ class DashboardState extends State<DashboardScreen> {
                         fontFamily: Config.fontFamily,
                         fontWeight: FontWeight.w500)),
                 SizedBox(height: SizeConfig.getPt(16)),
+//                CustomCard(
+//                  elevation: SizeConfig.getPt(8),
+//                  color: Colors.white,
+//                  shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
+//                  borderRadius: SizeConfig.getPt(24),
+//                  child: Container(
+//                    padding: EdgeInsets.only(
+//                        top: SizeConfig.getPt(16),
+//                        bottom: SizeConfig.getPt(16),
+//                        left: SizeConfig.getPt(24),
+//                        right: SizeConfig.getPt(24)),
+//                    child: SimpleBarChart(),
+//                  ),
+//                ),
+//                SizedBox(height: SizeConfig.getPt(16)),
                 CustomCard(
                   elevation: SizeConfig.getPt(8),
                   color: Colors.white,
                   shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
                   borderRadius: SizeConfig.getPt(24),
                   child: Container(
-                    padding: EdgeInsets.only(
-                        top: SizeConfig.getPt(16),
-                        bottom: SizeConfig.getPt(16),
-                        left: SizeConfig.getPt(24),
-                        right: SizeConfig.getPt(24)),
-                    child: SimpleBarChart(),
+                    padding: EdgeInsets.all(SizeConfig.getPt(16)),
+                    height: SizeConfig.getPt(200),
+                    child: StackedBarChart.withSampleData(),
                   ),
-                )
+                ),
               ],
             ),
           ),

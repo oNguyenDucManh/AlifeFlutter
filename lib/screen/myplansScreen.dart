@@ -167,6 +167,7 @@ class MyPlansState extends State<MyPlansScreen> {
                             width: SizeConfig.getPt(5),
                           ),
                           Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
                                 width: SizeConfig.getPt(30),
@@ -179,9 +180,6 @@ class MyPlansState extends State<MyPlansScreen> {
                                             SizeConfig.getPt(20)),
                                         bottomRight: Radius.circular(
                                             SizeConfig.getPt(20)))),
-                              ),
-                              SizedBox(
-                                height: SizeConfig.getPt(77),
                               ),
                               Container(
                                 width: SizeConfig.getPt(30),
