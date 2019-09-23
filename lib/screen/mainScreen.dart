@@ -4,6 +4,7 @@ import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/myWidget/BottomNavyBar.dart';
 import 'blankScreen.dart';
 import 'dashboardScreen.dart';
+import 'happydayScreen.dart';
 import 'myplansScreen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -40,27 +41,27 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.white,
       body: Container(
           child: PageView(
-            controller: _pageViewController,
-            children: <Widget>[
-              MyPlansScreen(),
-              BlankScreen(),
-              DashboardScreen(),
-              BlankScreen()
-            ],
-            onPageChanged: (index) {
-              setState(() {
-                print("index: $index");
-                currentIndex = index;
-              });
-            },
-          )),
+        controller: _pageViewController,
+        children: <Widget>[
+          MyPlansScreen(),
+          HappyDayScreen(),
+          DashboardScreen(),
+          BlankScreen()
+        ],
+        onPageChanged: (index) {
+          setState(() {
+            print("index: $index");
+            currentIndex = index;
+          });
+        },
+      )),
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: currentIndex,
         showElevation: true,
         onItemSelected: (index) => setState(() {
-          currentIndex = index;
-          _pageViewController.jumpToPage(index);
-        }),
+              currentIndex = index;
+              _pageViewController.jumpToPage(index);
+            }),
         items: [
           BottomNavyBarItem(
               icon: "assets/images/ic_my_plans.png",

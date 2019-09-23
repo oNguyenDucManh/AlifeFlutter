@@ -12,7 +12,7 @@ class HappyDayState extends State<HappyDayScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("aaaa"),
+        child: Text("aaa"),
       ),
     );
   }

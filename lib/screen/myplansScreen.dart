@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 
 //class MyPlansScreen extends StatelessWidget{
 //  @override
@@ -42,7 +43,8 @@ class MyPlansState extends State<MyPlansScreen> {
               padding: EdgeInsets.only(
                   top: SizeConfig.getPt(16),
                   left: SizeConfig.getPt(24),
-                  right: SizeConfig.getPt(24)),
+                  right: SizeConfig.getPt(24),
+                  bottom: SizeConfig.getPt(16)),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -100,8 +102,6 @@ class MyPlansState extends State<MyPlansScreen> {
                   Padding(
                       padding: EdgeInsets.only(
                           top: SizeConfig.getPt(36),
-                          left: SizeConfig.getPt(24),
-                          right: SizeConfig.getPt(24),
                           bottom: SizeConfig.getPt(8)),
                       child: RichText(
                         textAlign: TextAlign.center,
@@ -120,35 +120,83 @@ class MyPlansState extends State<MyPlansScreen> {
                             ]),
                       )),
                   Container(
-                    margin: EdgeInsets.only(top: SizeConfig.getPt(69.3)),
-                    width: SizeConfig.getPt(100.7),
-                    height: SizeConfig.getPt(100.7),
-                    child: Stack(
-                      children: <Widget>[
-                        Container(
-                          width: SizeConfig.getPt(100.7),
-                          height: SizeConfig.getPt(100.7),
+                      margin: EdgeInsets.only(top: SizeConfig.getPt(50)),
+                      child: AvatarGlow(
+                        glowColor: MyColors.red,
+                        endRadius: 90.0,
+                        duration: Duration(milliseconds: 2000),
+                        repeat: true,
+                        showTwoGlows: true,
+                        repeatPauseDuration: Duration(milliseconds: 100),
+                        child: Container(
+                          width: SizeConfig.getPt(60),
+                          height: SizeConfig.getPt(60),
                           decoration: new BoxDecoration(
-                            color: MyColors.redA8,
+                            color: MyColors.red,
                             shape: BoxShape.circle,
-                          )
+                          ),
+                          child: new Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
                         ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            width: SizeConfig.getPt(60),
-                            height: SizeConfig.getPt(60),
-                            decoration: new BoxDecoration(
-                              color: MyColors.red,
-                              shape: BoxShape.circle,
-                            ),
-                            child: new Icon(
-                              Icons.add,
-                              color: Colors.white,
+                      )),
+                  Expanded(
+                    flex: 1,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            child: Container(
+                              width: SizeConfig.getPt(30),
+                              height: SizeConfig.getPt(30),
+//                              color: MyColors.greyA40,
+                              decoration: BoxDecoration(
+                                  color: MyColors.greyA40,
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft:
+                                          Radius.circular(SizeConfig.getPt(20)),
+                                      topRight: Radius.circular(
+                                          SizeConfig.getPt(20)))),
                             ),
                           ),
-                        )
-                      ],
+                          Container(
+                            color: MyColors.greyA40,
+                            width: SizeConfig.getPt(5),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Container(
+                                width: SizeConfig.getPt(30),
+                                height: SizeConfig.getPt(30),
+//                              color: MyColors.greyA40,
+                                decoration: BoxDecoration(
+                                    color: MyColors.greyA40,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(
+                                            SizeConfig.getPt(20)),
+                                        bottomRight: Radius.circular(
+                                            SizeConfig.getPt(20)))),
+                              ),
+                              Container(
+                                width: SizeConfig.getPt(30),
+                                height: SizeConfig.getPt(30),
+//                              color: MyColors.greyA40,
+                                decoration: BoxDecoration(
+                                    color: MyColors.greyA40,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(
+                                            SizeConfig.getPt(20)),
+                                        bottomRight: Radius.circular(
+                                            SizeConfig.getPt(20)))),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   )
                 ],
