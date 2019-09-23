@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/config/Config.dart';
 import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
-import 'package:flutter_app/model/SalesData.dart';
 import 'package:flutter_app/myWidget/CustomCard.dart';
-import 'package:flutter_app/myWidget/MyBarChart.dart';
-
-//import 'package:flutter_app/myWidget/StackedBarChart.dart';
+import 'package:flutter_app/myWidget/StackAvatarWidget.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -18,6 +16,8 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class DashboardState extends State<DashboardScreen> {
+  bool isThisWeekSelected = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -157,7 +157,7 @@ class DashboardState extends State<DashboardScreen> {
                     style: TextStyle(
                         fontSize: SizeConfig.getPt(16),
                         color: MyColors.textLight,
-                        fontFamily: Config.fontFamily,
+                        fontFamily: 'AvenirNext',
                         fontWeight: FontWeight.w500)),
                 SizedBox(height: SizeConfig.getPt(16)),
                 CustomCard(
@@ -165,33 +165,188 @@ class DashboardState extends State<DashboardScreen> {
                   color: Colors.white,
                   shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
                   borderRadius: SizeConfig.getPt(24),
-                  child: Container(
-                    padding: EdgeInsets.all(SizeConfig.getPt(16)),
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: SizeConfig.getPt(16),
+                        right: SizeConfig.getPt(16),
+                        top: SizeConfig.getPt(29),
+                        bottom: SizeConfig.getPt(24)),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              width: SizeConfig.getPt(50),
+                              height: SizeConfig.getPt(50),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: SizeConfig.getPt(1),
+                                      color: Color.fromRGBO(
+                                          121, 133, 163, 10 / 100)),
+                                  shape: BoxShape.circle),
+                              //       <--- BoxDecoration here
+                              child: Text(
+                                "1",
+                                style:
+                                    TextStyle(fontSize: SizeConfig.getPt(24)),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            SizedBox(width: SizeConfig.getPt(8)),
+                            Text(
+                              "Achievement",
+                              style: TextStyle(
+                                  color: MyColors.textLight,
+                                  fontFamily: 'AvenirNext',
+                                  fontSize: SizeConfig.getPt(12),
+                                  fontStyle: FontStyle.normal),
+                            )
+                          ],
+                        ),
+                        SizedBox(height: SizeConfig.getPt(20)),
+                        Divider(
+                          color: Color.fromRGBO(52, 68, 110, 0.16),
+                          height: SizeConfig.getPt(1),
+                        ),
+                        SizedBox(height: SizeConfig.getPt(20)),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              width: SizeConfig.getPt(50),
+                              height: SizeConfig.getPt(50),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: SizeConfig.getPt(1),
+                                      color: Color.fromRGBO(
+                                          121, 133, 163, 10 / 100)),
+                                  shape: BoxShape.circle),
+                              //       <--- BoxDecoration here
+                              child: Text(
+                                "4",
+                                style:
+                                    TextStyle(fontSize: SizeConfig.getPt(24)),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            SizedBox(width: SizeConfig.getPt(8)),
+                            Text(
+                              "Friends",
+                              style: TextStyle(
+                                  color: MyColors.textLight,
+                                  fontFamily: 'AvenirNext',
+                                  fontSize: SizeConfig.getPt(12),
+                                  fontStyle: FontStyle.normal),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: StackAvatarWidget(
+                                listAvatarUrl: [
+                                  "https://taoanhonline.com/wp-content/uploads/2019/08/hinh-anh-avatar-0.jpg",
+                                  "https://thuthuatnhanh.com/wp-content/uploads/2019/08/avatar-cap-doi-de-thuong-nam.jpg",
+                                  "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png"
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: SizeConfig.getPt(30)),
-                Text("Your emotion",
-                    style: TextStyle(
-                        fontSize: SizeConfig.getPt(16),
-                        color: MyColors.textLight,
-                        fontFamily: Config.fontFamily,
-                        fontWeight: FontWeight.w500)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("Your emotion",
+                        style: TextStyle(
+                            fontSize: SizeConfig.getPt(16),
+                            color: MyColors.textLight,
+                            fontFamily: Config.fontFamily,
+                            fontWeight: FontWeight.w500)),
+                    Row(
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () {
+                            if (!isThisWeekSelected) {
+                              setState(() {
+                                isThisWeekSelected = true;
+                              });
+                            }
+                          },
+                          child: Container(
+                            width: SizeConfig.getPt(87),
+                            height: SizeConfig.getPt(28),
+                            alignment: Alignment.center,
+                            decoration: new BoxDecoration(
+                                color: isThisWeekSelected
+                                    ? MyColors.greenA8
+                                    : Colors.white,
+                                shape: BoxShape.rectangle,
+                                border: Border.all(
+                                  color: isThisWeekSelected
+                                      ? MyColors.colorPrimary
+                                      : MyColors.textLight,
+                                  width: SizeConfig.getPt(1),
+                                ),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(SizeConfig.getPt(18)))),
+                            child: Text(
+                              "This Week",
+                              style: TextStyle(
+                                  fontFamily: Config.fontFamily,
+                                  fontSize: SizeConfig.getPt(14),
+                                  color: isThisWeekSelected
+                                      ? MyColors.colorPrimary
+                                      : MyColors.textLight,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            if (isThisWeekSelected) {
+                              setState(() {
+                                isThisWeekSelected = false;
+                              });
+                            }
+                          },
+                          child: Container(
+                            width: SizeConfig.getPt(87),
+                            height: SizeConfig.getPt(28),
+                            margin: EdgeInsets.only(left: SizeConfig.getPt(8)),
+                            alignment: Alignment.center,
+                            decoration: new BoxDecoration(
+                                color: !isThisWeekSelected
+                                    ? MyColors.greenA8
+                                    : Colors.white,
+                                shape: BoxShape.rectangle,
+                                border: Border.all(
+                                  color: !isThisWeekSelected
+                                      ? MyColors.colorPrimary
+                                      : MyColors.textLight,
+                                  width: SizeConfig.getPt(1),
+                                ),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(SizeConfig.getPt(18)))),
+                            child: Text(
+                              "This Month",
+                              style: TextStyle(
+                                  fontFamily: Config.fontFamily,
+                                  fontSize: SizeConfig.getPt(14),
+                                  color: !isThisWeekSelected
+                                      ? MyColors.colorPrimary
+                                      : MyColors.textLight,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
                 SizedBox(height: SizeConfig.getPt(16)),
-//                CustomCard(
-//                  elevation: SizeConfig.getPt(8),
-//                  color: Colors.white,
-//                  shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
-//                  borderRadius: SizeConfig.getPt(24),
-//                  child: Container(
-//                    padding: EdgeInsets.only(
-//                        top: SizeConfig.getPt(16),
-//                        bottom: SizeConfig.getPt(16),
-//                        left: SizeConfig.getPt(24),
-//                        right: SizeConfig.getPt(24)),
-//                    child: SimpleBarChart(),
-//                  ),
-//                ),
-//                SizedBox(height: SizeConfig.getPt(16)),
                 CustomCard(
                   elevation: SizeConfig.getPt(8),
                   color: Colors.white,
@@ -203,6 +358,71 @@ class DashboardState extends State<DashboardScreen> {
                     child: getStackedColumnChart(true),
                   ),
                 ),
+                SizedBox(height: SizeConfig.getPt(30)),
+                Text("Best photo this week",
+                    style: TextStyle(
+                        fontSize: SizeConfig.getPt(16),
+                        color: MyColors.textLight,
+                        fontFamily: Config.fontFamily,
+                        fontWeight: FontWeight.w500)),
+                SizedBox(height: SizeConfig.getPt(16)),
+                CustomCard(
+                  elevation: SizeConfig.getPt(8),
+                  color: Colors.white,
+                  shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
+                  borderRadius: SizeConfig.getPt(16),
+                  child: ClipRRect(
+                    borderRadius:
+                        new BorderRadius.circular(SizeConfig.getPt(16)),
+                    child: Image.network(
+                      "https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                      fit: BoxFit.fill,
+                      height: SizeConfig.getPt(200),
+                      width: SizeConfig.screenWidth,
+                    ),
+                  ),
+                ),
+                SizedBox(height: SizeConfig.getPt(16)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(left: SizeConfig.getPt(16)),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            FontAwesomeIcons.twitter,
+                            size: SizeConfig.getPt(14),
+                            color: MyColors.textLight,
+                          ),
+                          SizedBox(width: SizeConfig.getPt(16)),
+                          Icon(
+                            FontAwesomeIcons.instagram,
+                            size: SizeConfig.getPt(14),
+                            color: MyColors.textLight,
+                          ),
+                          SizedBox(width: SizeConfig.getPt(16)),
+                          Icon(
+                            FontAwesomeIcons.facebookF,
+                            size: SizeConfig.getPt(14),
+                            color: MyColors.textLight,
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: SizeConfig.getPt(16)),
+                      child: Text(
+                        "12403 likes",
+                        style: TextStyle(
+                            fontFamily: Config.fontFamily,
+                            fontSize: SizeConfig.getPt(14),
+                            color: MyColors.textLight,
+                            fontStyle: FontStyle.normal),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),

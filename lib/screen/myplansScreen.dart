@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:toast/toast.dart';
 
 //class MyPlansScreen extends StatelessWidget{
 //  @override
@@ -27,7 +28,6 @@ class MyPlansScreen extends StatefulWidget {
 class MyPlansState extends State<MyPlansScreen> {
   String linkAvt =
       "https://scontent.fhan5-5.fna.fbcdn.net/v/t1.0-9/61109468_1057276004465467_4065373393921245184_n.jpg?_nc_cat=101&_nc_oc=AQk2vP9lBxD4uORqYRmuMGjOmjrtt2FUPYd0xp8cXgB1vwR6o2S9FwpuzQgfhoVnz3c&_nc_ht=scontent.fhan5-5.fna&oh=38a65a064dad26fbf1f0e8896a18b10f&oe=5DF39D03";
-  AnimationController _controller;
 
   @override
   void initState() {
@@ -128,16 +128,21 @@ class MyPlansState extends State<MyPlansScreen> {
                         repeat: true,
                         showTwoGlows: true,
                         repeatPauseDuration: Duration(milliseconds: 100),
-                        child: Container(
-                          width: SizeConfig.getPt(60),
-                          height: SizeConfig.getPt(60),
-                          decoration: new BoxDecoration(
-                            color: MyColors.red,
-                            shape: BoxShape.circle,
-                          ),
-                          child: new Icon(
-                            Icons.add,
-                            color: Colors.white,
+                        child: GestureDetector(
+                          onTap: (){
+                            Toast.show("Add plan", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                          },
+                          child: Container(
+                            width: SizeConfig.getPt(60),
+                            height: SizeConfig.getPt(60),
+                            decoration: new BoxDecoration(
+                              color: MyColors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: new Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       )),
