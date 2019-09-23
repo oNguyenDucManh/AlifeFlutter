@@ -17,7 +17,15 @@ class DashboardScreen extends StatefulWidget {
 
 class DashboardState extends State<DashboardScreen> {
   bool isThisWeekSelected = true;
-
+  final List<_ChartData> chartData = <_ChartData>[
+    _ChartData('Mo', 50, 55),
+    _ChartData('Tu', 80, 75),
+    _ChartData('We', 35, 45),
+    _ChartData('Th', 65, 50),
+    _ChartData('Fr', 65, 12),
+    _ChartData('Sa', 12, 34),
+    _ChartData('Su', 56, 76),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -464,15 +472,6 @@ class DashboardState extends State<DashboardScreen> {
 
   List<StackedColumnSeries<_ChartData, String>> getStackedColumnSeries(
       bool isTileView) {
-    final List<_ChartData> chartData = <_ChartData>[
-      _ChartData('Mo', 50, 55),
-      _ChartData('Tu', 80, 75),
-      _ChartData('We', 35, 45),
-      _ChartData('Th', 65, 50),
-      _ChartData('Fr', 65, 12),
-      _ChartData('Sa', 12, 34),
-      _ChartData('Su', 56, 76),
-    ];
     return <StackedColumnSeries<_ChartData, String>>[
       StackedColumnSeries<_ChartData, String>(
           enableTooltip: true,
