@@ -3,7 +3,9 @@ import 'package:flutter_app/config/Config.dart';
 import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/model/HappyDayModel.dart';
+import 'package:flutter_app/model/HappyDayResponse.dart';
 import 'package:flutter_app/screen/itemHappyDay.dart';
+import 'package:flutter_app/utils/UserBloc.dart';
 
 class HappyDayScreen extends StatefulWidget {
   @override
@@ -51,6 +53,7 @@ class HappyDayState extends State<HappyDayScreen>
             .animate(this._controller);
     _controller.reverse();
     super.initState();
+    bloc.getListHappyDay();
   }
 
   @override
@@ -169,7 +172,7 @@ class HappyDayState extends State<HappyDayScreen>
                           ),
                           Container(
                               margin:
-                                  EdgeInsets.only(left: SizeConfig.getPt(16)),
+                              EdgeInsets.only(left: SizeConfig.getPt(16)),
                               child: Text(
                                 "Tell with your heart!\nWhat made you happy today?",
                                 style: TextStyle(
@@ -186,23 +189,36 @@ class HappyDayState extends State<HappyDayScreen>
                     ),
                     Expanded(
                       flex: 1,
-                      child: Container(
-                        color: MyColors.backgroudGrey,
-                        padding: EdgeInsets.only(
-                            left: SizeConfig.getPt(24),
-                            right: SizeConfig.getPt(24)),
-                        child: ListView.builder(
-                          itemBuilder: (context, position) {
-                            return itemHappyDay(new HappyDayModel(
-                                123,
-                                "https://miro.medium.com/max/1280/0*TTtUNXm7jZX5e8Je",
-                                "Beautiful gift from my best friend",
-                                false,
-                                false,
-                                false));
-                          },
-                          itemCount: 3,
-                        ),
+                      child: StreamBuilder<HappyDayResponse>(
+                          stream: bloc.subject.stream,
+                          builder: (context,
+                              AsyncSnapshot<HappyDayResponse> snapshot) {
+                            if (snapshot.hasData) {
+                              if (snapshot.data.error != null && snapshot.data
+                                  .error.length > 0) {
+                                return Center(
+                                  child: Text(snapshot.data.error),
+                                );
+                              } else {
+                                return Container(
+                                  color: MyColors.backgroudGrey,
+                                  padding: EdgeInsets.only(
+                                      left: SizeConfig.getPt(24),
+                                      right: SizeConfig.getPt(24)),
+                                  child: ListView.builder(
+                                    itemBuilder: (context, position) {
+                                      return itemHappyDay(snapshot.data.data[position]);
+                                    },
+                                    itemCount: snapshot.data
+                                        .error.length,
+                                  ),
+                                );
+                              }
+                            }
+                            else {
+                              return Container();
+                            }
+                          }
                       ),
                     )
                   ]),
@@ -317,12 +333,13 @@ class HappyDayState extends State<HappyDayScreen>
                             onTap: _rotate,
                             child: new Center(
                                 child: new RotationTransition(
-                              turns: new AlwaysStoppedAnimation(_angle / 360),
-                              child: new Icon(
-                                Icons.add,
-                                color: new Color(0xFFFFFFFF),
-                              ),
-                            )),
+                                  turns: new AlwaysStoppedAnimation(
+                                      _angle / 360),
+                                  child: new Icon(
+                                    Icons.add,
+                                    color: new Color(0xFFFFFFFF),
+                                  ),
+                                )),
                           )),
                     )))
           ],
