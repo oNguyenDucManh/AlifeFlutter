@@ -32,6 +32,7 @@ dependencies:
   toast: ^0.1.5
   dio: ^3.0.2-dev.1
   rxdart: ^0.22.2
+  shared_preferences: ^0.5.3+4
 #  flutter_statusbarcolor: ^0.2.1
 #  bottom_navy_bar: ^5.2.0
 

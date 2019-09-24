@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/config/MyColors.dart';
+import 'package:flutter_app/screen/DetailHappyDayScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'screen/mainScreen.dart';
 import 'package:page_indicator/page_indicator.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(
+      title: 'Named Routes Demo',
+      // Start the app with the "/" named route. In this case, the app starts
+      // on the FirstScreen widget.
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/': (context) => MyApp(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/main': (context) => MainScreen(),
+        '/detailHappyDay': (context) => DetailHappyDayScreen(),
+      },
+    ));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -28,11 +42,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void gotoMain() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MainScreen()),
-    );
+  SharedPreferences pref;
+
+  gotoMain() {
+    Navigator.pushNamed(context, '/main');
   }
 
   void clickNext() {
@@ -57,7 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     isLastPage = false;
     super.initState();
-
   }
 
   @override

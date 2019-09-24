@@ -10,12 +10,9 @@ import 'myplansScreen.dart';
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: MyColors.colorPrimary,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: MyHomePage(title: 'Flutter Demo Home Page')
     );
   }
 }
@@ -32,33 +29,33 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int currentIndex = 0;
   PageController _pageViewController =
-      PageController(initialPage: 0, keepPage: true);
+  PageController(initialPage: 0, keepPage: true);
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Container(
           child: PageView(
-        controller: _pageViewController,
-        children: <Widget>[
-          MyPlansScreen(),
-          HappyDayScreen(),
-          DashboardScreen(),
-          BlankScreen()
-        ],
-        onPageChanged: (index) {
-          setState(() {
-            print("index: $index");
-            currentIndex = index;
-          });
-        },
-      )),
+            controller: _pageViewController,
+            children: <Widget>[
+              MyPlansScreen(),
+              HappyDayScreen(),
+              DashboardScreen(),
+              BlankScreen()
+            ],
+            onPageChanged: (index) {
+              setState(() {
+                print("index: $index");
+                currentIndex = index;
+              });
+            },
+          )),
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: currentIndex,
         showElevation: true,
-        onItemSelected: (index) => setState(() {
+        onItemSelected: (index) =>
+            setState(() {
               currentIndex = index;
               _pageViewController.jumpToPage(index);
             }),

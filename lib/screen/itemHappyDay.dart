@@ -5,6 +5,7 @@ import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/model/HappyDayResponse.dart';
 import 'package:flutter_app/myWidget/CustomCard.dart';
+import 'package:flutter_app/screen/DetailHappyDayScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class itemHappyDay extends StatelessWidget {
@@ -27,7 +28,15 @@ class itemHappyDay extends StatelessWidget {
         borderRadius: SizeConfig.getPt(8),
         child: Container(
 //          width: SizeConfig.screenWidth,
-          child: _childWithImage(),
+          child: GestureDetector(
+            child: _childWithImage(),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DetailHappyDayScreen()),
+              );
+            },
+          ),
         ),
       ),
     );

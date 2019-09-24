@@ -306,8 +306,9 @@ class HappyDayState extends State<HappyDayScreen>
                                 },
                                 child: new Center(
                                   child: new Icon(
-                                    Icons.add,
-                                    color: new Color(0xFFFFFFFF),
+                                    Icons.mic,
+                                    size: SizeConfig.getPt(32),
+                                    color: Colors.white,
                                   ),
                                 ),
                               )),
