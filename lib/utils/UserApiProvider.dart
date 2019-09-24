@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_app/model/HappyDayResponse.dart';
+import 'dart:convert';
 
 class UserApiProvider{
   final String _endpoint = "https://raw.githubusercontent.com/oNguyenDucManh/AlifeFlutter/master/json/happydays.json";
@@ -8,7 +9,7 @@ class UserApiProvider{
   Future<HappyDayResponse> getListHappyDay() async {
     try {
       Response response = await _dio.get(_endpoint);
-      return HappyDayResponse.fromJson(response.data);
+      return HappyDayResponse.fromJson(json.decode(response.data));
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
       return HappyDayResponse.withError("$error");

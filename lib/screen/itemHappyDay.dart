@@ -16,7 +16,10 @@ class itemHappyDay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: SizeConfig.getPt(8), bottom: SizeConfig.getPt(8)),
+          top: SizeConfig.getPt(8),
+          bottom: SizeConfig.getPt(8),
+          left: SizeConfig.getPt(24),
+          right: SizeConfig.getPt(24)),
       child: CustomCard(
         elevation: SizeConfig.getPt(8),
         color: Colors.white,

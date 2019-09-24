@@ -5,19 +5,21 @@ class HappyDayResponse {
   HappyDayResponse({this.data});
 
   HappyDayResponse.fromJson(Map<String, dynamic> json) {
-    this.data = (json['data'] as List)!=null?(json['data'] as List).map((i) => HappyDayModel.fromJson(i)).toList():null;
+    this.data = (json['data'] as List) != null
+        ? (json['data'] as List).map((i) => HappyDayModel.fromJson(i)).toList()
+        : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['data'] = this.data != null?this.data.map((i) => i.toJson()).toList():null;
+    data['data'] =
+        this.data != null ? this.data.map((i) => i.toJson()).toList() : null;
     return data;
   }
 
   HappyDayResponse.withError(String errorValue)
       : data = List(),
         error = errorValue;
-
 }
 
 class HappyDayModel {
@@ -28,7 +30,13 @@ class HappyDayModel {
   bool isHideFacebook;
   int countLike;
 
-  HappyDayModel({this.imgUrl, this.title, this.isHideTwister, this.isHideInstagram, this.isHideFacebook, this.countLike});
+  HappyDayModel(
+      {this.imgUrl,
+      this.title,
+      this.isHideTwister,
+      this.isHideInstagram,
+      this.isHideFacebook,
+      this.countLike});
 
   HappyDayModel.fromJson(Map<String, dynamic> json) {
     this.imgUrl = json['imgUrl'];

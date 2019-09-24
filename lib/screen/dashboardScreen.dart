@@ -15,7 +15,7 @@ class DashboardScreen extends StatefulWidget {
   }
 }
 
-class DashboardState extends State<DashboardScreen> {
+class DashboardState extends State<DashboardScreen> with AutomaticKeepAliveClientMixin<DashboardScreen>{
   bool isThisWeekSelected = true;
   final List<_ChartData> chartData = <_ChartData>[
     _ChartData('Mo', 50, 55),
@@ -493,6 +493,10 @@ class DashboardState extends State<DashboardScreen> {
           name: 'Product B')
     ];
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
 
 class _ChartData {

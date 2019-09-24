@@ -14,7 +14,7 @@ class HappyDayScreen extends StatefulWidget {
 }
 
 class HappyDayState extends State<HappyDayScreen>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin<HappyDayScreen>  {
   int _angle = 90;
   Color _color = MyColors.colorPrimary;
   bool _isRotated = true;
@@ -201,15 +201,12 @@ class HappyDayState extends State<HappyDayScreen>
                               } else {
                                 return Container(
                                   color: MyColors.backgroudGrey,
-                                  padding: EdgeInsets.only(
-                                      left: SizeConfig.getPt(24),
-                                      right: SizeConfig.getPt(24)),
                                   child: ListView.builder(
                                     itemBuilder: (context, position) {
                                       return itemHappyDay(snapshot.data.data[position]);
                                     },
                                     itemCount: snapshot.data
-                                        .error.length,
+                                        .data.length,
                                   ),
                                 );
                               }
@@ -346,4 +343,7 @@ class HappyDayState extends State<HappyDayScreen>
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
