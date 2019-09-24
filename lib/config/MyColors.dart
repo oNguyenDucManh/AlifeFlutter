@@ -10,4 +10,5 @@ class MyColors {
   static Color greyA40 = Color.fromRGBO(221, 224, 233, 40 / 100);
   static Color greenA8 = Color.fromRGBO(29, 210, 193, 0.08);
   static Color backgroudGrey = Color.fromRGBO(247, 250, 250, 1);
+  static Color greyLight = Color.fromRGBO(155, 163, 186, 1);
 }
