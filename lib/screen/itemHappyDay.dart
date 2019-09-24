@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/config/Config.dart';
 import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
-import 'package:flutter_app/model/HappyDayModel.dart';
+import 'package:flutter_app/model/HappyDayResponse.dart';
 import 'package:flutter_app/myWidget/CustomCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

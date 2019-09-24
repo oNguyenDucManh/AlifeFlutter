@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/config/Config.dart';
 import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
-import 'package:flutter_app/model/HappyDayModel.dart';
 import 'package:flutter_app/model/HappyDayResponse.dart';
 import 'package:flutter_app/screen/itemHappyDay.dart';
 import 'package:flutter_app/utils/UserBloc.dart';
