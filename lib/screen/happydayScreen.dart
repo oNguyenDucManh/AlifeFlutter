@@ -203,7 +203,7 @@ class HappyDayState extends State<HappyDayScreen>
                                   color: MyColors.backgroudGrey,
                                   child: ListView.builder(
                                     itemBuilder: (context, position) {
-                                      return itemHappyDay(snapshot.data.data[position]);
+                                      return ItemHappyDay(snapshot.data.data[position], position);
                                     },
                                     itemCount: snapshot.data
                                         .data.length,

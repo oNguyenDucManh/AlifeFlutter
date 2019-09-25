@@ -1,41 +1,40 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/arguments/DetailHappyDayArguments.dart';
 import 'package:flutter_app/config/Config.dart';
 import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/model/HappyDayResponse.dart';
 import 'package:flutter_app/myWidget/CustomCard.dart';
-import 'package:flutter_app/screen/DetailHappyDayScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class itemHappyDay extends StatelessWidget {
+class ItemHappyDay extends StatelessWidget {
   HappyDayModel _happyDayModel;
+  int position = 0;
 
-  itemHappyDay(this._happyDayModel);
+  ItemHappyDay(this._happyDayModel, this.position);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-          top: SizeConfig.getPt(8),
-          bottom: SizeConfig.getPt(8),
-          left: SizeConfig.getPt(24),
-          right: SizeConfig.getPt(24)),
-      child: CustomCard(
-        elevation: SizeConfig.getPt(8),
-        color: Colors.white,
-        shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
-        borderRadius: SizeConfig.getPt(8),
-        child: Container(
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, "/detailHappyDay",
+            arguments: DetailHappyDayArguments(_happyDayModel, position));
+      },
+      child: Padding(
+        padding: EdgeInsets.only(
+            top: SizeConfig.getPt(8),
+            bottom: SizeConfig.getPt(8),
+            left: SizeConfig.getPt(24),
+            right: SizeConfig.getPt(24)),
+        child: CustomCard(
+          elevation: SizeConfig.getPt(8),
+          color: Colors.white,
+          shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
+          borderRadius: SizeConfig.getPt(8),
+          child: Container(
 //          width: SizeConfig.screenWidth,
-          child: GestureDetector(
             child: _childWithImage(),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => DetailHappyDayScreen()),
-              );
-            },
           ),
         ),
       ),
@@ -45,13 +44,16 @@ class itemHappyDay extends StatelessWidget {
   Widget _childWithImage() {
     return Column(
       children: <Widget>[
-        Image.network(
-          _happyDayModel.imgUrl,
-          height: SizeConfig.getPt((_happyDayModel.imgUrl != null &&
-                  _happyDayModel.imgUrl.isNotEmpty)
-              ? 200
-              : 0),
-          fit: BoxFit.fitWidth,
+        Hero(
+          tag: 'imageHappyDay$position',
+          child: Image.network(
+            _happyDayModel.imgUrl,
+            height: SizeConfig.getPt((_happyDayModel.imgUrl != null &&
+                    _happyDayModel.imgUrl.isNotEmpty)
+                ? 200
+                : 0),
+            fit: BoxFit.fitWidth,
+          ),
         ),
         Container(
           alignment: Alignment.topLeft,

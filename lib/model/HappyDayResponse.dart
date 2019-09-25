@@ -25,6 +25,7 @@ class HappyDayResponse {
 class HappyDayModel {
   String imgUrl;
   String title;
+  String content;
   bool isHideTwister;
   bool isHideInstagram;
   bool isHideFacebook;
@@ -33,6 +34,7 @@ class HappyDayModel {
   HappyDayModel(
       {this.imgUrl,
       this.title,
+      this.content,
       this.isHideTwister,
       this.isHideInstagram,
       this.isHideFacebook,
@@ -41,6 +43,7 @@ class HappyDayModel {
   HappyDayModel.fromJson(Map<String, dynamic> json) {
     this.imgUrl = json['imgUrl'];
     this.title = json['title'];
+    this.content = json['content'];
     this.isHideTwister = json['isHideTwister'];
     this.isHideInstagram = json['isHideInstagram'];
     this.isHideFacebook = json['isHideFacebook'];
@@ -51,6 +54,7 @@ class HappyDayModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['imgUrl'] = this.imgUrl;
     data['title'] = this.title;
+    data['content'] = this.content;
     data['isHideTwister'] = this.isHideTwister;
     data['isHideInstagram'] = this.isHideInstagram;
     data['isHideFacebook'] = this.isHideFacebook;

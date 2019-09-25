@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/screen/DetailHappyDayScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screen/mainScreen.dart';
@@ -24,10 +23,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primaryColor: MyColors.colorPrimary),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return Scaffold(
+      body: MyHomePage(),
     );
   }
 }
@@ -45,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   SharedPreferences pref;
 
   gotoMain() {
-    Navigator.pushNamed(context, '/main');
+    Navigator.pushReplacementNamed(context, '/main');
   }
 
   void clickNext() {
@@ -82,8 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         marginRightNext = SizeConfig.getPt(8);
       }
     });
-    return Scaffold(
-        body: Stack(
+    return Stack(
       children: <Widget>[
         PageIndicatorContainer(
           child: PageView(
@@ -136,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ))
       ],
-    ));
+    );
   }
 
   Widget skipView() {
