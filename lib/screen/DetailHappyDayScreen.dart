@@ -142,7 +142,10 @@ class DetailHappyDayState extends State<DetailHappyDayStateful> {
             ),
             GestureDetector(
               onTap: () {
-                _showBottomSheet(context);
+//                _showBottomSheet(context);
+                Toast.show("aaaa", context,
+                    duration: Toast.LENGTH_SHORT,
+                    gravity: Toast.BOTTOM);
               },
               child: Container(
                 child: Center(

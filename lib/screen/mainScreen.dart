@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       )),
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: currentIndex,
-        showElevation: true,
+        showElevation: false,
         onItemSelected: (index) => setState(() {
           currentIndex = index;
           _pageViewController.jumpToPage(index);

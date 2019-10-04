@@ -119,91 +119,112 @@ class MyPlansState extends State<MyPlansScreen> {
                               new TextSpan(text: "today...")
                             ]),
                       )),
-                  Container(
-                      margin: EdgeInsets.only(top: SizeConfig.getPt(50)),
-                      child: AvatarGlow(
-                        glowColor: MyColors.red,
-                        endRadius: 90.0,
-                        duration: Duration(milliseconds: 2000),
-                        repeat: true,
-                        showTwoGlows: true,
-                        repeatPauseDuration: Duration(milliseconds: 100),
-                        child: GestureDetector(
-                          onTap: (){
-                            Toast.show("Add plan", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
-                          },
-                          child: Container(
-                            width: SizeConfig.getPt(60),
-                            height: SizeConfig.getPt(60),
-                            decoration: new BoxDecoration(
-                              color: MyColors.red,
-                              shape: BoxShape.circle,
-                            ),
-                            child: new Icon(
-                              Icons.add,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      )),
+                  SizedBox(
+                    height: SizeConfig.getPt(50),
+                  ),
                   Expanded(
-                    flex: 1,
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      flex: 1,
+                      child: Stack(
                         children: <Widget>[
-                          Container(
+                          Align(
+                            alignment: Alignment.topCenter,
                             child: Container(
-                              width: SizeConfig.getPt(30),
-                              height: SizeConfig.getPt(30),
-//                              color: MyColors.greyA40,
-                              decoration: BoxDecoration(
-                                  color: MyColors.greyA40,
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft:
-                                          Radius.circular(SizeConfig.getPt(20)),
-                                      topRight: Radius.circular(
-                                          SizeConfig.getPt(20)))),
-                            ),
-                          ),
-                          Container(
-                            color: MyColors.greyA40,
-                            width: SizeConfig.getPt(5),
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                width: SizeConfig.getPt(30),
-                                height: SizeConfig.getPt(30),
-//                              color: MyColors.greyA40,
-                                decoration: BoxDecoration(
-                                    color: MyColors.greyA40,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(
-                                            SizeConfig.getPt(20)),
-                                        bottomRight: Radius.circular(
-                                            SizeConfig.getPt(20)))),
+                                child: AvatarGlow(
+                              glowColor: MyColors.red,
+                              endRadius: 90.0,
+                              duration: Duration(milliseconds: 2000),
+                              repeat: true,
+                              showTwoGlows: true,
+                              repeatPauseDuration: Duration(milliseconds: 100),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Toast.show("Add plan", context,
+                                      duration: Toast.LENGTH_SHORT,
+                                      gravity: Toast.BOTTOM);
+                                },
+                                child: Container(
+                                  width: SizeConfig.getPt(60),
+                                  height: SizeConfig.getPt(60),
+                                  decoration: new BoxDecoration(
+                                    color: MyColors.red,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: new Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
-                              Container(
-                                width: SizeConfig.getPt(30),
-                                height: SizeConfig.getPt(30),
-//                              color: MyColors.greyA40,
-                                decoration: BoxDecoration(
-                                    color: MyColors.greyA40,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(
-                                            SizeConfig.getPt(20)),
-                                        bottomRight: Radius.circular(
-                                            SizeConfig.getPt(20)))),
-                              )
-                            ],
+                            )),
                           ),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(top: SizeConfig.getPt(115)),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Container(
+                                    child: Container(
+                                      width: SizeConfig.getPt(30),
+                                      height: SizeConfig.getPt(30),
+//                              color: MyColors.greyA40,
+                                      decoration: BoxDecoration(
+                                          color: MyColors.greyA40,
+                                          borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(
+                                                  SizeConfig.getPt(20)),
+                                              topRight: Radius.circular(
+                                                  SizeConfig.getPt(20)))),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: MyColors.greyA40,
+                                    width: SizeConfig.getPt(5),
+                                  ),
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        height: SizeConfig.getPt(0),
+                                      ),
+                                      Container(
+                                        width: SizeConfig.getPt(30),
+                                        height: SizeConfig.getPt(30),
+//                              color: MyColors.greyA40,
+                                        decoration: BoxDecoration(
+                                            color: MyColors.greyA40,
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(
+                                                    SizeConfig.getPt(20)),
+                                                bottomRight: Radius.circular(
+                                                    SizeConfig.getPt(20)))),
+                                      ),
+                                      Container(
+                                        width: SizeConfig.getPt(30),
+                                        height: SizeConfig.getPt(30),
+//                              color: MyColors.greyA40,
+                                        decoration: BoxDecoration(
+                                            color: MyColors.greyA40,
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(
+                                                    SizeConfig.getPt(20)),
+                                                bottomRight: Radius.circular(
+                                                    SizeConfig.getPt(20)))),
+                                      ),
+                                      SizedBox(
+                                        height: SizeConfig.getPt(0),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
                         ],
-                      ),
-                    ),
-                  )
+                      )),
                 ],
               ))),
     );

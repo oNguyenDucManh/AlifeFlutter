@@ -23,7 +23,7 @@ class CustomCard extends StatelessWidget {
       child: new Container(
           margin: const EdgeInsets.all(4.0),
           child: new Material(
-            shadowColor: shadowColor, // added
+            shadowColor: shadowColor, // added,
             color: color,
             type: MaterialType.card,
             elevation: elevation,

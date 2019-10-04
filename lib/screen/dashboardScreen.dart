@@ -63,7 +63,7 @@ class DashboardState extends State<DashboardScreen> with AutomaticKeepAliveClien
                   children: <Widget>[
                     Expanded(
                       child: CustomCard(
-                        elevation: SizeConfig.getPt(8),
+                        elevation: SizeConfig.getPt(16),
                         color: Colors.white,
                         shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
                         borderRadius: SizeConfig.getPt(24),
@@ -112,7 +112,7 @@ class DashboardState extends State<DashboardScreen> with AutomaticKeepAliveClien
                     SizedBox(width: SizeConfig.getPt(17)),
                     Expanded(
                       child: CustomCard(
-                        elevation: SizeConfig.getPt(8),
+                        elevation: SizeConfig.getPt(16),
                         color: Colors.white,
                         shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
                         borderRadius: SizeConfig.getPt(24),
@@ -169,7 +169,7 @@ class DashboardState extends State<DashboardScreen> with AutomaticKeepAliveClien
                         fontWeight: FontWeight.w500)),
                 SizedBox(height: SizeConfig.getPt(16)),
                 CustomCard(
-                  elevation: SizeConfig.getPt(8),
+                  elevation: SizeConfig.getPt(16),
                   color: Colors.white,
                   shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
                   borderRadius: SizeConfig.getPt(24),
@@ -356,7 +356,7 @@ class DashboardState extends State<DashboardScreen> with AutomaticKeepAliveClien
                 ),
                 SizedBox(height: SizeConfig.getPt(16)),
                 CustomCard(
-                  elevation: SizeConfig.getPt(8),
+                  elevation: SizeConfig.getPt(16),
                   color: Colors.white,
                   shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
                   borderRadius: SizeConfig.getPt(24),
@@ -375,7 +375,7 @@ class DashboardState extends State<DashboardScreen> with AutomaticKeepAliveClien
                         fontWeight: FontWeight.w500)),
                 SizedBox(height: SizeConfig.getPt(16)),
                 CustomCard(
-                  elevation: SizeConfig.getPt(8),
+                  elevation: SizeConfig.getPt(16),
                   color: Colors.white,
                   shadowColor: Color.fromRGBO(52, 68, 110, 0.16),
                   borderRadius: SizeConfig.getPt(16),
