@@ -11,7 +11,8 @@ void main() => runApp(MaterialApp(
       initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => SplashScreen(),
+//        '/': (context) => SplashScreen(),
+        '/': (context) => IntroScreen(),
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/intro': (context) => IntroScreen(),
         '/main': (context) => MainScreen(),
