@@ -140,7 +140,7 @@ class DetailHappyDayState extends State<DetailHappyDayStateful> {
                 )
               ],
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {
                 _showBottomSheet(context);
 //                Toast.show("aaaa", context,
@@ -203,7 +203,7 @@ class DetailHappyDayState extends State<DetailHappyDayStateful> {
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           Navigator.of(context).pop();
                         },
@@ -237,7 +237,7 @@ class DetailHappyDayState extends State<DetailHappyDayStateful> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          GestureDetector(
+                          InkWell(
                             onTap: () {
                               if (indexClick != 0) {
                                 updateIndex(state, 0);
@@ -281,7 +281,7 @@ class DetailHappyDayState extends State<DetailHappyDayStateful> {
                             ),
                           ),
                           SizedBox(width: SizeConfig.getPt(6)),
-                          GestureDetector(
+                          InkWell(
                             onTap: () {
                               if (indexClick != 1) {
                                 updateIndex(state, 1);
@@ -325,7 +325,7 @@ class DetailHappyDayState extends State<DetailHappyDayStateful> {
                             ),
                           ),
                           SizedBox(width: SizeConfig.getPt(6)),
-                          GestureDetector(
+                          InkWell(
                             onTap: () {
                               if (indexClick != 2) {
                                 updateIndex(state, 2);
@@ -399,7 +399,7 @@ class DetailHappyDayState extends State<DetailHappyDayStateful> {
                           children: <Widget>[
                             Align(
                               alignment: Alignment.topCenter,
-                              child: GestureDetector(
+                              child: InkWell(
                                 onTap: () {
                                   Navigator.of(context).pop();
                                 },

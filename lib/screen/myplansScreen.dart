@@ -279,7 +279,7 @@ class MyPlansState extends State<MyPlansScreen> {
       repeat: true,
       showTwoGlows: true,
       repeatPauseDuration: Duration(milliseconds: 100),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () {
           _showListMyPlan();
         },

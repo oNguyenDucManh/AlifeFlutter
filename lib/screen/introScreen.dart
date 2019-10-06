@@ -22,7 +22,6 @@ class IntroScreenStateful extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreenStateful> {
-
   gotoMain() {
     Navigator.pushReplacementNamed(context, '/main');
   }
@@ -43,7 +42,7 @@ class _IntroScreenState extends State<IntroScreenStateful> {
   bool isLastPage = false;
   double marginRightNext = 0;
   int currentPage = 0;
-  PageController _controller = PageController(initialPage: 0, keepPage: true);
+  PageController _controller = PageController(initialPage: 0);
 
   @override
   void initState() {
@@ -121,7 +120,7 @@ class _IntroScreenState extends State<IntroScreenStateful> {
     return Container(
       padding: EdgeInsets.only(
           top: SizeConfig.getPt(14), bottom: SizeConfig.getPt(14)),
-      child: GestureDetector(
+      child: InkWell(
         child: Text("Skip",
             style: TextStyle(
                 color: Color.fromRGBO(34, 52, 94, 1),
@@ -134,7 +133,7 @@ class _IntroScreenState extends State<IntroScreenStateful> {
 
   Widget nextView() {
     if (!isLastPage) {
-      return GestureDetector(
+      return InkWell(
         child: Container(
             padding: EdgeInsets.only(
                 top: SizeConfig.getPt(14),
@@ -148,7 +147,7 @@ class _IntroScreenState extends State<IntroScreenStateful> {
         onTap: () => clickNext(),
       );
     } else {
-      return GestureDetector(
+      return InkWell(
         child: Container(
           padding: EdgeInsets.only(
               top: SizeConfig.getPt(14),

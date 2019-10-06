@@ -103,7 +103,7 @@ class BottomNavyBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: items.map((item) {
               var index = items.indexOf(item);
-              return GestureDetector(
+              return InkWell(
                 onTap: () {
                   onItemSelected(index);
                 },

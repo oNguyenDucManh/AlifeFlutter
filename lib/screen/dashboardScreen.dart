@@ -275,7 +275,7 @@ class DashboardState extends State<DashboardScreen> with AutomaticKeepAliveClien
                             fontWeight: FontWeight.w500)),
                     Row(
                       children: <Widget>[
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             if (!isThisWeekSelected) {
                               setState(() {
@@ -312,7 +312,7 @@ class DashboardState extends State<DashboardScreen> with AutomaticKeepAliveClien
                             ),
                           ),
                         ),
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             if (isThisWeekSelected) {
                               setState(() {
