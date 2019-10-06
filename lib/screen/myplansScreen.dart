@@ -38,6 +38,7 @@ class MyPlansState extends State<MyPlansScreen> {
   double topTop;
   double topBottom;
   double topTree;
+  GlobalKey _keyStack = GlobalKey();
 
   @override
   void initState() {
@@ -49,7 +50,7 @@ class MyPlansState extends State<MyPlansScreen> {
       rightRight = SizeConfig.getPt(24);
       topTree = SizeConfig.getPt(40) + SizeConfig.getPt(60);
       topTop = 0;
-      topBottom =
+      topBottom = 200;
       listMyPlan.add(new MyPlan("Call My Mom", 1));
       listMyPlan.add(new MyPlan("Kiss my husband ", 1));
       isVisibleListMyPlan = false;
@@ -160,6 +161,7 @@ class MyPlansState extends State<MyPlansScreen> {
                   Expanded(
                       flex: 1,
                       child: Stack(
+                        key: _keyStack,
                         children: <Widget>[
                           Opacity(
                             opacity: isVisibleListMyPlan ? 1 : 0,
@@ -241,7 +243,7 @@ class MyPlansState extends State<MyPlansScreen> {
                           ),
                           AnimatedPositioned(
                               duration: Duration(milliseconds: 300),
-                              top: isVisibleListMyPlan ? 100 : topTop,
+                              top: isVisibleListMyPlan ? _getSizes() : topTop,
                               right: isVisibleListMyPlan
                                   ? rightRight
                                   : rightCenter,
@@ -259,6 +261,13 @@ class MyPlansState extends State<MyPlansScreen> {
     setState(() {
       isVisibleListMyPlan = !isVisibleListMyPlan;
     });
+  }
+
+  double _getSizes() {
+    final RenderBox renderBoxRed = _keyStack.currentContext.findRenderObject();
+    final sizeRed = renderBoxRed.size;
+    print("SIZE of Red: $sizeRed");
+    return sizeRed.height - SizeConfig.getPt(60);
   }
 
   Widget _btnAdd() {
