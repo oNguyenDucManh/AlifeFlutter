@@ -4,6 +4,7 @@ import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/myWidget/BottomNavyBar.dart';
 import 'blankScreen.dart';
 import 'dashboardScreen.dart';
+import 'epubReaderScreen.dart';
 import 'happydayScreen.dart';
 import 'myplansScreen.dart';
 
@@ -40,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
           MyPlansScreen(),
           HappyDayScreen(),
           DashboardScreen(),
-          BlankScreen()
+          EpubWidget()
         ],
         onPageChanged: (index) {
           setState(() {
