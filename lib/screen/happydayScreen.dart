@@ -3,6 +3,7 @@ import 'package:flutter_app/config/Config.dart';
 import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/model/HappyDayResponse.dart';
+import 'package:flutter_app/myWidget/DialogAddSuccess.dart';
 import 'package:flutter_app/screen/itemHappyDay.dart';
 import 'package:flutter_app/utils/UserBloc.dart';
 
@@ -237,7 +238,7 @@ class HappyDayState extends State<HappyDayScreen>
                               child: new InkWell(
                                 onTap: () {
                                   if (_angle == 45.0) {
-                                    print("foo1");
+                                    _showDialog();
                                   }
                                 },
                                 child: new Center(
@@ -269,7 +270,7 @@ class HappyDayState extends State<HappyDayScreen>
                               child: new InkWell(
                                 onTap: () {
                                   if (_angle == 45.0) {
-                                    print("foo2");
+                                    _showDialog();
                                   }
                                 },
                                 child: new Center(
@@ -301,7 +302,7 @@ class HappyDayState extends State<HappyDayScreen>
                               child: new InkWell(
                                 onTap: () {
                                   if (_angle == 45.0) {
-                                    print("foo3");
+                                    _showDialog();
                                   }
                                 },
                                 child: new Center(
@@ -347,4 +348,21 @@ class HappyDayState extends State<HappyDayScreen>
 
   @override
   bool get wantKeepAlive => true;
+
+  _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius:
+              BorderRadius.all(Radius.circular(SizeConfig.getPt(24)))),
+          content: DialogAddSuccess(onPositionClick: () {
+            Navigator.of(context).pop();
+          }),
+          contentPadding: EdgeInsets.all(0),
+        );
+      },
+    );
+  }
 }

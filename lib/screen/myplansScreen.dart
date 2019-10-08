@@ -3,6 +3,7 @@ import 'package:flutter_app/config/MyColors.dart';
 import 'package:flutter_app/config/SizeConfig.dart';
 import 'package:flutter_app/model/MyPlan.dart';
 import 'package:flutter_app/myWidget/AvatarGlow.dart';
+import 'package:flutter_app/myWidget/DialogAddSuccess.dart';
 import 'package:flutter_app/screen/itemMyPlans.dart';
 import 'package:toast/toast.dart';
 
